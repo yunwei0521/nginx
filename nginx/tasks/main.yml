@@ -1,0 +1,11 @@
+---
+# tasks file for nginx
+- name: install nginx server
+  yum: name={{ item }} state=installed disablerepo=* enablerepo=chinadaas_base,chinadaas_updates,chinadaas_nginx
+  with_items:
+  - nginx
+- name: nginx service started
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes
